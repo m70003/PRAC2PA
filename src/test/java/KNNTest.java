@@ -4,9 +4,19 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import org.junit.Before;
 import org.junit.Test;
 
 public class KNNTest {
+
+    private CSV csvReader;
+
+
+    @Before
+    public void setUp() {
+        csvReader = new CSV("C:\\Users\\mulla\\IdeaProjects\\PRAC2PA\\src\\main\\java\\iris.csv");
+    }
 
     @Test
     public void testDistanceCalculation() {
@@ -28,7 +38,7 @@ public class KNNTest {
         List<Double> point3 = Arrays.asList(6.3, 3.3, 6.0, 2.5);
 
         TableWithLabels irisTable = new TableWithLabels();
-        irisTable.loadFromCSV("iris.csv");
+        irisTable.loadFromCSV("C:\\Users\\mulla\\IdeaProjects\\PRAC2PA\\src\\main\\java\\iris.csv");
 
         KNN knn = new KNN();
         knn.train(irisTable);

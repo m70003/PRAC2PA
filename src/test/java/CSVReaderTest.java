@@ -11,27 +11,28 @@ public class CSVReaderTest {
 
     @Before
     public void setUp() {
-        csvReader = new CSV("test.csv");
+        csvReader = new CSV("C:\\Users\\mulla\\IdeaProjects\\PRAC2PA\\src\\main\\java\\test.csv");
     }
 
     @Test
     public void testReadCSV() {
-        List<String[]> data = (List<String[]>) csvReader.read();
+        List<String[]> data = (List<String[]>) csvReader.read2();
 
         // Verificar el número de filas
         assertEquals(4, data.size());
 
         // Verificar el número de columnas
         String[] headers = data.get(0);
-        assertEquals(3, headers.length);
+        assertEquals(4, headers.length);
         for (String[] row : data) {
-            assertEquals(3, row.length);
+            assertEquals(4, row.length);
         }
 
         // Verificar los nombres de las etiquetas de las cabeceras
-        assertEquals("Nombre", headers[0]);
-        assertEquals("Apellido", headers[1]);
-        assertEquals("Edad", headers[2]);
+        assertEquals("Numero", headers[0]);
+        assertEquals("Nombre", headers[1]);
+        assertEquals("Apellido", headers[2]);
+        assertEquals("Edad", headers[3]);
 
         // Verificar el número que se asigna a cada fila
         assertEquals("1", data.get(1)[0]);

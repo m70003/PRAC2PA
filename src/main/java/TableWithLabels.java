@@ -1,6 +1,11 @@
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.BufferedReader;
+import java.io.FileReader;
+
+import static java.lang.module.ModuleDescriptor.read;
+
 
 public class TableWithLabels {
     private final List<List<Double>> data;
@@ -12,6 +17,7 @@ public class TableWithLabels {
     public TableWithLabels() {
         this.data = new ArrayList<>();
         this.labels = new ArrayList<>();
+        this.rows = new ArrayList<>();
     }
 
     public void addRow(List<Double> row, Integer label) {
@@ -44,7 +50,7 @@ public class TableWithLabels {
         List<List<String>> csvData = (List<List<String>>) csv.read();
 
         // Convert CSV data into table
-        List<List<Double>> table = new ArrayList<>();
+        List<List<Double>> table = (List<List<Double>>) new Table();
         for (List<String> row : csvData) {
             List<Double> doubleRow = new ArrayList<>();
             for (String value : row) {
@@ -56,7 +62,6 @@ public class TableWithLabels {
         // Store table
         this.table = table;
     }
-
 
     public int getNumColumns() {
         return this.data.get(0).size();

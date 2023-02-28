@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -37,6 +38,26 @@ public class CSV {
         }
 
         return table;
+    }
+
+    public List<String[]> read2() {
+        List<String[]> data = new ArrayList<>();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            String line;
+
+            // Leer cada línea del archivo CSV
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split(",");
+
+                // Agregar los valores de la fila a la lista
+                data.add(values);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return data;
     }
 }
 
